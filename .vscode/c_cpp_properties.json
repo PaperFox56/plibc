@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "plibc",
+            "includePath": [
+                "${workspaceFolder}/include"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "compilerArgs": ["-nostdinc"],
+            "cStandard": "c17",
+            "intelliSenseMode": "linux-clang-x64"
+        }
+    ],
+    "version": 4
+}
