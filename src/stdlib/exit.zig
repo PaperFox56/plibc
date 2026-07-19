@@ -31,5 +31,5 @@ pub export fn atexit(func: Procedure) callconv(.c) c_int {
 
 pub export fn _Exit(code: c_int) callconv(.c) noreturn {
     // Specification says those are identical
-    @import("../unistd/lib.zig")._exit(code);
+    @import("root").unistd._exit(code);
 }
