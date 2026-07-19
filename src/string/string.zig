@@ -58,8 +58,30 @@ pub export fn memcmp(str1: [*]const u8, str2: [*]const u8, n: usize) callconv(.c
     return 0;
 }
 
+pub export fn strlen(str: [*:0]const u8) usize {
+    var len: usize = 0;
+    while (str[len] != 0) : (len += 1) {}
+
+    return len;
+}
+
 // Tests
 //--------------------------
+test "strlen" {
+    const std = @import("std");
+    const strings = [_]struct { [:0]const u8, usize }{
+        .{ "Hello", 5 },
+        .{ "This is a string!", 17 },
+        .{ "This string is \x00cut in the middle", 15 },
+    };
+    for (strings) |s| {
+        try std.testing.expectEqual(
+            s.@"1",
+            strlen(s.@"0"),
+        );
+    }
+}
+
 test "memcpy basic" {
     const std = @import("std");
     var dest: [5]u8 = undefined;
