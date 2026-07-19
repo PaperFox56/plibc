@@ -1,11 +1,11 @@
 #ifndef _UNISTD_H
 #define _UNISTD_H
 
-#include <sys/cdefs.h>
+#include <features.h>
 
 __BEGIN_DECLS
 
-void _exit(int __status) __NORETURN;
+_Noreturn void _exit(int __status);
 
 __END_DECLS
 

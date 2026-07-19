@@ -1,4 +1,6 @@
 pub export fn _exit(code: c_int) callconv(.c) noreturn {
+    // TODO: Close the file descriptors
+
     // For now, a simple exit syscall
     // SYS_exit_group = 231 on x86_64
     asm volatile (

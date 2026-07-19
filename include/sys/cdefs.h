@@ -10,8 +10,4 @@
 # define __END_DECLS
 #endif
 
-#define __LEAF
-#define __NORETURN __attribute__ ((__noreturn__))
-#define __THROW __attribute__ ((__nothrow__ __LEAF))
-
 #endif /* sys/cdefs.h */
