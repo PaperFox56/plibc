@@ -1,4 +1,4 @@
-const root = @import("root");
+const errno = @import("../errno/errno.zig");
 
 pub export fn syscall(number: c_long, ...) callconv(.c) c_long {
     var ap = @cVaStart();
@@ -23,10 +23,10 @@ pub export fn syscall(number: c_long, ...) callconv(.c) c_long {
           [r9] "{r9}" (a6),
         : .{ .rcx = true, .r11 = true, .memory = true });
 
-    return @intCast(root.errno.negErrno(result));
+    return @intCast(errno.negErrno(result));
 }
 
-pub export fn read(fd: c_int, buf: ?*anyopaque, count: usize) callconv(.c) isize {
+pub export fn read(fd: c_int, buf: [*]u8, count: usize) callconv(.c) isize {
     return @intCast(syscall(
         0,
         @as(usize, @intCast(fd)),
@@ -35,7 +35,7 @@ pub export fn read(fd: c_int, buf: ?*anyopaque, count: usize) callconv(.c) isize
     ));
 }
 
-pub export fn write(fd: c_int, buf: ?*const anyopaque, count: usize) callconv(.c) isize {
+pub export fn write(fd: c_int, buf: [*]const u8, count: usize) callconv(.c) isize {
     return @intCast(syscall(
         1,
         @as(usize, @intCast(fd)),

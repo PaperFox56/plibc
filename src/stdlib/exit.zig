@@ -1,3 +1,5 @@
+const unistd = @import("../unistd/unistd.zig");
+
 /// A function that takes no argument and returns nothing
 const Procedure = *const fn () callconv(.c) void;
 
@@ -31,5 +33,5 @@ pub export fn atexit(func: Procedure) callconv(.c) c_int {
 
 pub export fn _Exit(code: c_int) callconv(.c) noreturn {
     // Specification says those are identical
-    @import("root").unistd._exit(code);
+    unistd._exit(code);
 }

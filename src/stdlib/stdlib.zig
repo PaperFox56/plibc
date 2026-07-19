@@ -1,1 +1,3 @@
-pub const exit = @import("exit.zig");
+comptime {
+    _ = @import("exit.zig");
+}

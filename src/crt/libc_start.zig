@@ -1,8 +1,7 @@
-const exit = @import("stdlib/exit.zig").exit;
+extern fn exit(code: c_int) callconv(.c) noreturn;
+extern fn main(argc: usize, argv: [*][*]u8) callconv(.c) c_int;
 
-extern fn main(argc: usize, argv: [*][*]u8) c_int;
-
-pub fn __libc_start_main(
+pub export fn __libc_start_main(
     argc: usize,
     argv: [*][*]u8,
     envp: [*][*]u8,
