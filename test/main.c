@@ -2,8 +2,9 @@
 #include <unistd.h>
 
 int main(int argc, char **argv) {
-    if (argc > 1)
-        exit(argc);
-    write(1, "Hello\n", 6);
+    char buf[32] = {0};
+    read(STDIN_FILENO, buf, 32);
+    write(STDOUT_FILENO, "You said: ", 10);
+    write(STDOUT_FILENO, buf, 32);
     return 0;
 }

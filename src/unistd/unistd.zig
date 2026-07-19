@@ -26,6 +26,15 @@ pub export fn syscall(number: c_long, ...) callconv(.c) c_long {
     return @intCast(root.errno.negErrno(result));
 }
 
+pub export fn read(fd: c_int, buf: ?*anyopaque, count: usize) callconv(.c) isize {
+    return @intCast(syscall(
+        0,
+        @as(usize, @intCast(fd)),
+        @intFromPtr(buf),
+        count,
+    ));
+}
+
 pub export fn write(fd: c_int, buf: ?*const anyopaque, count: usize) callconv(.c) isize {
     return @intCast(syscall(
         1,
