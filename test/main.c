@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 int main(int argc, char **argv) {
     char buf[32] = {0};
-    read(STDIN_FILENO, buf, 32);
-    memmove(buf, "Some", 4);
-    write(STDOUT_FILENO, "You said: ", 10);
-    write(STDOUT_FILENO, buf, 32);
+    read(STDIN_FILENO, buf, 20);
+    memmove(buf+10, buf, 20);
+    memcpy(buf, "You said: ", 10);
+    puts(buf);
     return 0;
 }

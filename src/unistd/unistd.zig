@@ -1,3 +1,7 @@
+pub const STDIN_FILENO = 0;
+pub const STDOUT_FILENO = 1;
+pub const STDERR_FILENO = 2;
+
 const errno = @import("../errno/errno.zig");
 
 pub export fn syscall(number: c_long, ...) callconv(.c) c_long {

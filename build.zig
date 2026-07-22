@@ -37,11 +37,6 @@ pub fn build(b: *std.Build) void {
     });
     b.installArtifact(lib_dyn);
 
-    // const free_target = b.resolveTargetQuery(.{
-    //     .cpu_arch = .x86_64,
-    //     .os_tag = .linux,
-    //     .abi = .none,
-    // });
     const crt_mod = b.createModule(.{
         .root_source_file = b.path("src/crt/libc_start.zig"),
         .target = target,

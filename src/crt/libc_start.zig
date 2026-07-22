@@ -8,7 +8,6 @@ pub export fn __libc_start_main(
 ) callconv(.c) noreturn {
     // TODO: Initialize malloc
     // TODO: Initialize stdio
-    // TODO: Register atexit handlers
 
     const result = main(argc, argv);
     _ = envp;
