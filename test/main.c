@@ -6,8 +6,10 @@
 int main(int argc, char **argv) {
     char buf[32] = {0};
     read(STDIN_FILENO, buf, 20);
-    memmove(buf+10, buf, 20);
-    memcpy(buf, "You said: ", 10);
+    fputs("You said: ", stdout);
     puts(buf);
+
+    char* str = "This is the end~\n";
+    fwrite(str, 1, strlen(str), stdout);
     return 0;
 }

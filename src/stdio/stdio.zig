@@ -1,19 +1,30 @@
-const unistd = @import("../unistd/unistd.zig");
-const string = @import("../string/string.zig");
+comptime {
+    _ = @import("put.zig");
+}
 
-const EOF = 0;
+const _stream = @import("stream.zig");
 
-pub export fn puts(str: [*:0]const u8) callconv(.c) c_int {
-    const result = unistd.write(
-        unistd.STDOUT_FILENO,
-        str,
-        string.strlen(str),
-    );
-    if (result < 0) return EOF;
-    const _result = unistd.write(
-        unistd.STDOUT_FILENO,
-        "\n",
-        1,
-    );
-    return if (_result < 0) EOF else @intCast(result + 1);
+const EOF = _stream.EOF;
+const IO_FILE = _stream.IO_FILE;
+const __overflow = _stream.__overflow;
+
+pub export fn fwrite(
+    noalias src: [*]const u8,
+    size: usize,
+    count: usize,
+    noalias stream: *IO_FILE,
+) callconv(.c) usize {
+    var item: usize = 0;
+    var pos: usize = 0;
+
+    while (item < count) : (item += 1) {
+        for (0..size) |_| {
+            if (!__overflow(src[pos], stream)) {
+                break;
+            }
+            pos += 1;
+        }
+    }
+
+    return item;
 }
