@@ -4,7 +4,7 @@
 #include <features.h>
 
 int atexit(void (*) (void));
-_Noreturn void exit(int __status);
-_Noreturn void _Exit(int __status);
+_Noreturn void exit(int);
+_Noreturn void _Exit(int);
 
 #endif /* stdlib.h */

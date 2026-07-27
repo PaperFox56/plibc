@@ -10,12 +10,12 @@ __BEGIN_DECLS
 #define STDOUT_FILENO 1
 #define STDERR_FILENO 2
 
-_Noreturn void _exit(int __status);
+_Noreturn void _exit(int);
 
-ssize_t write(int fd, const void *buf, size_t count);
-ssize_t read(int fd, void *buf, size_t count);
+ssize_t write(int, const void*, size_t);
+ssize_t read(int, void*, size_t);
 
-long syscall(long number, ...);
+long syscall(long, ...);
 
 __END_DECLS
 

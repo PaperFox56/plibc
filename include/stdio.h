@@ -18,16 +18,16 @@ extern FILE *stdout;
 extern FILE *stderr;
 
 
-int fflush(FILE *stream);
+int fflush(FILE*);
 
-int fputc(int c, FILE *stream);
-int fputs(const char* str, FILE *stream);
+int fputc(int, FILE *);
+int fputs(const char*, FILE*);
 
-size_t fwrite(const void *restrict src, size_t size, size_t count, FILE *restrict stream);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
 
 
 
-int puts(const char* str);
+int puts(const char*);
 
 // The standard library allows putc to be a macro
 #define putc(c, stream) fputc((c), (stream))
