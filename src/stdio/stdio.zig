@@ -20,7 +20,7 @@ pub export fn fwrite(
     while (item < count) : (item += 1) {
         for (0..size) |_| {
             if (!__overflow(src[pos], stream)) {
-                break;
+                return item;
             }
             pos += 1;
         }

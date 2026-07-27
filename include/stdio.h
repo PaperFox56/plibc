@@ -11,7 +11,7 @@ __BEGIN_DECLS
 #define EOF -1
 
 
-typedef struct {} FILE;
+typedef struct _IO_FILE FILE;
 
 extern FILE *stdin;
 extern FILE *stdout;
@@ -24,6 +24,8 @@ int fputc(int c, FILE *stream);
 int fputs(const char* str, FILE *stream);
 
 size_t fwrite(const void *restrict src, size_t size, size_t count, FILE *restrict stream);
+
+
 
 int puts(const char* str);
 
