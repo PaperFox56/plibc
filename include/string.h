@@ -13,16 +13,17 @@ int memcmp (const void*, const void*, size_t);
 
 void *memset(void*, int, size_t);
 
-// void *memchr(const void * s, int c, size_t n);
-// void *memrchr(const void * s, int c, size_t n);
+void *memchr(const void*, int, size_t);
+void *memrchr(const void*, int, size_t);
 
 
 size_t strlen (const char*);
 
-// char *strcpy (char *__restrict, const char *__restrict);
+char *strnul(const char *s);
+char *strcpy (char *__restrict, const char *__restrict);
 // char *strncpy (char *__restrict, const char *__restrict, size_t);
 
-// char *strcat (char *__restrict, const char *__restrict);
+char *strcat (char *__restrict, const char *__restrict);
 // char *strncat (char *__restrict, const char *__restrict, size_t);
 
 // int strcmp (const char *, const char *);
